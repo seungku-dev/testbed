@@ -12,11 +12,17 @@ public:
         return instance;
     }
 
+    uint32_t GenerateUid() {
+        return test_id_++;
+    }
+
 private:
     TestManager() = default;
     virtual ~TestManager() = default;
     TestManager(const TestManager&) = delete;
     TestManager& operator=(const TestManager&) = delete;
+
+    uint32_t test_id_ = 0;
 };
 
 #endif // TESTMANAGER_H

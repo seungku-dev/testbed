@@ -5,7 +5,7 @@
 
 class TestCase {
 public:
-    TestCase() = default;
+    TestCase();
     virtual ~TestCase() = default;
 
     bool Run();
@@ -17,6 +17,7 @@ protected:
 
 private:
     std::future<bool> data_;
+    uint32_t id_ = 0;
 };
 
 #endif // TESTCASE_H

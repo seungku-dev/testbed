@@ -1,9 +1,11 @@
 #include <chrono>
 #include <exception>
+#include <iomanip>
 #include <string>
 
 #include <log.h>
 #include <testcase.h>
+#include <testmanager.h>
 
 #define COLOR_RESET   "\033[0m"
 #define COLOR_RED     "\033[31m"
@@ -11,11 +13,15 @@
 
 using namespace std::chrono;
 
+TestCase::TestCase() {
+    id_ = TestManager::GetInstance().GenerateUid();
+}
+
 bool TestCase::Run() {
     bool result = false;
     auto start = steady_clock::now();
 
-    syncout << "[ RUN    ] " << typeid(*this).name() << syncend;
+    syncout << "[ RUN    ][ " << id_ << " ] " << typeid(*this).name() << syncend;
 
     try {
         result = Test();
@@ -28,8 +34,8 @@ bool TestCase::Run() {
     auto run_time = duration_cast<milliseconds>(end-start);
     std::string test_result = result? COLOR_GREEN"PASSED": COLOR_RED"FAILED";
 
-    syncout << "[ " << test_result << COLOR_RESET << " ] "
-            << typeid(*this).name()
+    syncout << "[ " << test_result << COLOR_RESET << " ]"
+            << "[ " << id_ << " ] " << typeid(*this).name()
             << " (" << run_time.count() << " ms)" << syncend;
 
     return result;
