@@ -18,8 +18,15 @@ public:
         return test_id_++;
     }
 
-    bool LoadConfig() {
-        return config.Load();
+    bool LoadConfig(std::filesystem::path path) {
+        try {
+            config.Load(path);
+        } catch (std::exception& e) {
+            syncerr << e.what() << syncend;
+            return false;
+        }
+
+        return true;
     }
 
 private:

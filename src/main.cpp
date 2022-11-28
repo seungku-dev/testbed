@@ -25,17 +25,21 @@ public:
 // -- TEST CODE
 
 int main(int argc, char** argv) {
-    if (TestManager::GetInstance().LoadConfig() == false) {
-        throw std::runtime_error("Failed to load config");
+    if (TestManager::GetInstance().LoadConfig("./config/setting.config") == false) {
+        syncerr << "Failed to load configuration" << syncend;
     }
 
     std::shared_ptr<TestBed> testbed(new TestBed());
 
-    for (int i=0; i<50; i++) {
-        testbed->AddTest(std::make_shared<MyTestCase>());
-    }
+    // Single Test
+    testbed->RunTest(std::make_shared<MyTestCase>());
 
-    testbed->RunAllTest(RunType::Async);
+    // Multiple Test
+    // for (int i=0; i<50; i++) {
+    //     testbed->AddTest(std::make_shared<MyTestCase>());
+    // }
+
+    // testbed->RunAllTest(RunType::Async);
 
     return 0;
 }
