@@ -1,6 +1,5 @@
 #include <chrono>
 #include <exception>
-#include <iomanip>
 #include <string>
 
 #include <log.h>
@@ -21,7 +20,7 @@ bool TestCase::Run() {
     bool result = false;
     auto start = steady_clock::now();
 
-    syncout << "[ RUN    ][ " << id_ << " ] " << typeid(*this).name() << syncend;
+    syncout << "[  RUN!  ][ " << std::setw(3) << id_ << " ] " << typeid(*this).name() << syncend;
 
     try {
         result = Test();
@@ -35,7 +34,7 @@ bool TestCase::Run() {
     std::string test_result = result? COLOR_GREEN"PASSED": COLOR_RED"FAILED";
 
     syncout << "[ " << test_result << COLOR_RESET << " ]"
-            << "[ " << id_ << " ] " << typeid(*this).name()
+            << "[ " << std::setw(3) << id_ << " ] " << typeid(*this).name()
             << " (" << run_time.count() << " ms)" << syncend;
 
     return result;

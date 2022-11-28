@@ -3,7 +3,7 @@ project(testbed)
 
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/src)
 set(PROJECT_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
-set(TARGET_INSTALL_DIR /usr/local/rsi)
+set(TARGET_INSTALL_DIR /usr/local)
 
 include_directories(
     ${PROJECT_SOURCE_DIR}
