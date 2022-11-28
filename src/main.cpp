@@ -25,7 +25,7 @@ public:
 // -- TEST CODE
 
 int main(int argc, char** argv) {
-    if (TestManager::GetInstance().LoadConfig("./config/setting.config") == false) {
+    if (TestManager::GetInstance().LoadConfig(DEFAULT_CONFIG_PATH"setting.config") == false) {
         syncerr << "Failed to load configuration" << syncend;
     }
 

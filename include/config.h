@@ -9,6 +9,9 @@ public:
     virtual ~Config() = default;
 
     void Load(std::filesystem::path path);
+
+private:
+    const std::filesystem::path default_path_ = DEFAULT_CONFIG_PATH;
 };
 
 #endif // CONFIG_H
