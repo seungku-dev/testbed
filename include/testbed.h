@@ -18,7 +18,7 @@ public:
     bool RunTest(int index);
     bool RunAllTest(RunType type = RunType::Sync);
 
-    std::size_t GetCountTest();
+    std::size_t GetTestListSize();
 
 private:
     using TestCases = std::vector<std::shared_ptr<TestCase>>;

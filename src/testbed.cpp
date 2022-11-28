@@ -10,7 +10,7 @@ bool TestBed::RunTest(std::shared_ptr<TestCase> testcase) {
 }
 
 bool TestBed::RunTest(int index) {
-    if (index >= GetCountTest()) {
+    if (index >= GetTestListSize()) {
         throw;
     }
 
@@ -32,10 +32,10 @@ bool TestBed::RunAllTest(RunType type) {
         }
     }
 
-    syncout << "Test Result: " << result << ", Total: " << GetCountTest() << syncend;
+    syncout << "Test Result: " << result << ", Total: " << GetTestListSize() << syncend;
     return result;
 }
 
-std::size_t TestBed::GetCountTest() {
+std::size_t TestBed::GetTestListSize() {
     return test_cases_.size();
 }

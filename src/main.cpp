@@ -1,5 +1,6 @@
 #include <log.h>
 #include <testbed.h>
+#include <testmanager.h>
 
 // TEST CODE --
 #include <chrono>
@@ -24,6 +25,10 @@ public:
 // -- TEST CODE
 
 int main(int argc, char** argv) {
+    if (TestManager::GetInstance().LoadConfig() == false) {
+        throw std::runtime_error("Failed to load config");
+    }
+
     std::shared_ptr<TestBed> testbed(new TestBed());
 
     for (int i=0; i<50; i++) {

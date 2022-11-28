@@ -1,6 +1,8 @@
 #ifndef TESTMANAGER_H
 #define TESTMANAGER_H
 
+#include <config.h>
+
 /*
     Singleton pattern
     TestManager manages setting.config, test environment
@@ -12,8 +14,12 @@ public:
         return instance;
     }
 
-    uint32_t GenerateUid() {
+    uint32_t GenerateTestId() {
         return test_id_++;
+    }
+
+    bool LoadConfig() {
+        return config.Load();
     }
 
 private:
@@ -23,6 +29,7 @@ private:
     TestManager& operator=(const TestManager&) = delete;
 
     uint32_t test_id_ = 0;
+    Config config;
 };
 
 #endif // TESTMANAGER_H

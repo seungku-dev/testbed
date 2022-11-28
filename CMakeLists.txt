@@ -3,7 +3,9 @@ project(testbed)
 
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/src)
 set(PROJECT_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
-set(TARGET_INSTALL_DIR /usr/local)
+
+set(TARGET_INSTALL_DIR /usr/local/testbed)
+set(CONFIG_INSTALL_DIR /usr/local/testbed/config)
 
 include_directories(
     ${PROJECT_SOURCE_DIR}
@@ -20,3 +22,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 install(TARGETS ${PROJECT_NAME} 
         RUNTIME DESTINATION ${TARGET_INSTALL_DIR})
+
+install(FILES setting.config 
+        DESTINATION ${CONFIG_INSTALL_DIR})

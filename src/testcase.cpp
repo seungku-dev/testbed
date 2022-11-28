@@ -13,7 +13,7 @@
 using namespace std::chrono;
 
 TestCase::TestCase() {
-    id_ = TestManager::GetInstance().GenerateUid();
+    id_ = TestManager::GetInstance().GenerateTestId();
 }
 
 bool TestCase::Run() {
