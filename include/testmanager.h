@@ -18,9 +18,9 @@ public:
         return test_id_++;
     }
 
-    bool LoadConfig(std::filesystem::path path) {
+    bool LoadConfig(fs::path path = DEFAULT_CONFIG_PATH"/default.config") {
         try {
-            config.Load(path);
+            config.Load(fs::canonical(path));
         } catch (std::exception& e) {
             syncerr << e.what() << syncend;
             return false;

@@ -1,10 +1,11 @@
+#include <iostream>
+
 #include <log.h>
 #include <testbed.h>
 #include <testmanager.h>
 
 // TEST CODE --
 #include <chrono>
-#include <iostream>
 #include <stdexcept>
 #include <thread>
 
@@ -25,8 +26,8 @@ public:
 // -- TEST CODE
 
 int main(int argc, char** argv) {
-    if (TestManager::GetInstance().LoadConfig(DEFAULT_CONFIG_PATH"setting.config") == false) {
-        syncerr << "Failed to load configuration" << syncend;
+    if (TestManager::GetInstance().LoadConfig() == false) {
+        std::cout << "Failed to load configuration" << std::endl;
     }
 
     std::shared_ptr<TestBed> testbed(new TestBed());

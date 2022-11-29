@@ -28,5 +28,5 @@ target_compile_definitions(
     PUBLIC
     DEFAULT_CONFIG_PATH="${CONFIG_INSTALL_DIR}")
 
-install(FILES setting.config 
+install(FILES default.config 
         DESTINATION ${CONFIG_INSTALL_DIR})

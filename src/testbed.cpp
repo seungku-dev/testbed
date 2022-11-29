@@ -1,4 +1,5 @@
-#include <log.h>
+#include <iostream>
+
 #include <testbed.h>
 
 void TestBed::AddTest(std::shared_ptr<TestCase> testcase) {
@@ -32,7 +33,7 @@ bool TestBed::RunAllTest(RunType type) {
         }
     }
 
-    syncout << "Test Result: " << result << ", Total: " << GetTestListSize() << syncend;
+    std::cout << "Test Result: " << result << ", Total: " << GetTestListSize() << std::endl;
     return result;
 }
 

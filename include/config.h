@@ -3,15 +3,14 @@
 
 #include <filesystem>
 
+namespace fs = std::filesystem;
+
 class Config {
 public:
     Config() = default;
     virtual ~Config() = default;
 
-    void Load(std::filesystem::path path);
-
-private:
-    const std::filesystem::path default_path_ = DEFAULT_CONFIG_PATH;
+    void Load(fs::path file);
 };
 
 #endif // CONFIG_H
