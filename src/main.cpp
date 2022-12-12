@@ -26,8 +26,8 @@ public:
 // -- TEST CODE
 
 int main(int argc, char** argv) {
-    if (TM.LoadConfig() == false) {
-        std::cout << "Failed to load configuration" << std::endl;
+    if (TestManager::GetInstance().Init() == false) {
+        std::cout << "Failed to initialize" << std::endl;
     }
 
     // Single Test

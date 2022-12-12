@@ -1,17 +1,11 @@
-#include <fstream>
 #include <iostream>
 
 #include <config.h>
 
-void Config::Load(fs::path path) {
-    std::cout << "Load config file: " << path << std::endl;
-    if (fs::exists(path)) {
-        std::ifstream in(path);
-
+void Config::Load(std::ifstream& file) {
+    while (file) {
         std::string buffer;
-        while (in) {
-            getline(in, buffer);
-            std::cout << buffer << std::endl;
-        }
+        getline(file, buffer);
+        std::cout << buffer << std::endl;
     }
 }

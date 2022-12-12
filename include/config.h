@@ -1,16 +1,14 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#include <filesystem>
-
-namespace fs = std::filesystem;
+#include <fstream>
 
 class Config {
 public:
     Config() = default;
     virtual ~Config() = default;
 
-    void Load(fs::path file);
+    void Load(std::ifstream& file);
 };
 
 #endif // CONFIG_H

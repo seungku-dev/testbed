@@ -23,6 +23,11 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 install(TARGETS ${PROJECT_NAME} 
         RUNTIME DESTINATION ${TARGET_INSTALL_DIR})
 
+target_compile_definitions(
+    ${PROJECT_NAME} 
+    PUBLIC
+    VERSION_PATH="${TARGET_INSTALL_DIR}")
+
 install(FILES VERSION 
         DESTINATION ${TARGET_INSTALL_DIR})
 
