@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include <log.h>
-#include <testbed.h>
+#include <testsuite.h>
 #include <testmanager.h>
 
 // TEST CODE --
@@ -26,21 +26,24 @@ public:
 // -- TEST CODE
 
 int main(int argc, char** argv) {
-    if (TestManager::GetInstance().LoadConfig() == false) {
+    if (TM.LoadConfig() == false) {
         std::cout << "Failed to load configuration" << std::endl;
     }
 
-    std::shared_ptr<TestBed> testbed(new TestBed());
-
     // Single Test
-    testbed->RunTest(std::make_shared<MyTestCase>());
+    std::shared_ptr<TestCase> testcase(new MyTestCase());
+    testcase->Run();
 
-    // Multiple Test
-    // for (int i=0; i<50; i++) {
-    //     testbed->AddTest(std::make_shared<MyTestCase>());
-    // }
+    // Multiple Test by using TestSuite
+    // Running Type: Async, Sync
+    std::shared_ptr<TestSuite> testsuite(new TestSuite());
+    for (int i=0; i<10; i++) {
+        testsuite->AddTestCase(std::make_shared<MyTestCase>());
+    }
+    testsuite->RunAllTestCase(RunType::Sync);
 
-    // testbed->RunAllTest(RunType::Async);
+    // Single Test by using TestSuite
+    testsuite->RunTestCase(5);
 
     return 0;
 }

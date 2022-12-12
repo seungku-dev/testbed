@@ -3,9 +3,11 @@
 
 #include <config.h>
 
+#define TM TestManager::GetInstance()
+
 /*
-    Singleton pattern
-    TestManager manages setting.config, test environment
+    Meyers Singleton pattern
+    TestManager manages .config, VERSION, etc
  */
 class TestManager {
 public:
@@ -14,20 +16,8 @@ public:
         return instance;
     }
 
-    uint32_t GenerateTestId() {
-        return test_id_++;
-    }
-
-    bool LoadConfig(fs::path path = DEFAULT_CONFIG_PATH"/default.config") {
-        try {
-            config.Load(fs::canonical(path));
-        } catch (std::exception& e) {
-            syncerr << e.what() << syncend;
-            return false;
-        }
-
-        return true;
-    }
+    uint32_t GenerateTestId();
+    bool LoadConfig(fs::path path = DEFAULT_CONFIG_PATH"/default.config");
 
 private:
     TestManager() = default;

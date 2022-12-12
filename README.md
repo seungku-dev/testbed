@@ -17,7 +17,7 @@ $ ./run_build.sh
 You can also simply delete build artifacts with the script option.
 
 ```bash
-$ ./run_build.sh clean
+$ ./run_build.sh --clean
 ```
 
 Alternatively, you can build directly with the cmake command.
@@ -27,4 +27,10 @@ $ mkdir build
 $ cmake -S . -B build
 $ cmake --build build
 $ cmake --install build
+```
+
+# Execution
+
+```bash
+$ /usr/local/testbed/testbed
 ```

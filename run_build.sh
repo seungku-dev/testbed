@@ -9,7 +9,7 @@ if [ -n "$1" ]; then
             echo "Options:"
             echo "    clean = Remove a build directory."
             ;;
-        "clean")
+        "--clean")
             if [ -d "build" ]; then
                 cat build/install_manifest.txt | xargs -L1 dirname | sudo xargs rm -rv
                 rm -rfv build
